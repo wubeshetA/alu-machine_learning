@@ -7,7 +7,6 @@ def matrix_shape(matrix):
         matrix = matrix[0]
     return shape
 
-
 # mat1 = [1,1]
 # print(matrix_shape(mat1))
 # mat2 = [[[1, 2, 3, 4, 5],
