@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """ Calculates the transpose of a matrix
 """
+
+
 def matrix_transpose(matrix):
     """ Calculates the transpose of a matrix """
     transpose = []
