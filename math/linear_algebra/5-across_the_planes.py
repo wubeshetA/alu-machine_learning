@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+Add 2D matrices
+"""
+
+
 def add_matrices2D(mat1, mat2):
     """_summary_
 
