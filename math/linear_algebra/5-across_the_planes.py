@@ -5,7 +5,7 @@ Add 2D matrices
 
 
 def add_matrices2D(mat1, mat2):
-    """_summary_
+    """Add the two matrices
 
     Args:
         mat1 (_type_): _description_
