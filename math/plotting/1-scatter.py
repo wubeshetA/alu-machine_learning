@@ -6,7 +6,7 @@ import pprint
 mean = [69, 0]
 cov = [[15, 8], [8, 15]]
 np.random.seed(5)
-x, y = np.random.multivariate_normal(mean, cov, 1000000).T
+x, y = np.random.multivariate_normal(mean, cov, 2000).T
 # print(x)
 # calculate mean
 y_mean = np.mean(y)
