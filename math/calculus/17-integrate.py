@@ -8,7 +8,7 @@ def poly_integral(poly, C=0):
     """ Calculates the integral of a polynomial
     """
     integral = []
-    if not isinstance(poly, list) and not isinstance(C, int):
+    if not isinstance(poly, list) or not isinstance(C, int):
         return None
 
     # integral.append(c)
