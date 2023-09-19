@@ -6,10 +6,6 @@ Calculates the integral of a polynomial
 
 def poly_integral(poly, C=0):
     """ Calculates the integral of a polynomial
-
-    Args:
-        poly (_type_): _description_
-        c (int, optional): _description_. Defaults to 0.
     """
     integral = []
     if not isinstance(poly, list) and not isinstance(C, int):
@@ -21,8 +17,12 @@ def poly_integral(poly, C=0):
         integral.append(poly[i]/(i+1))
     integral.append(poly[0])
     integral.append(C)
+    for i in range(len(integral)):
+        if integral[i] % 1 == 0:
+            integral[i] = int(integral[i])
+
     return integral[::-1]
 
 
-# poly = [5, 3, 0, 1]
-# print(poly_integral(poly, C=4))
+poly = [5, 3, 0, 1]
+print(poly_integral(poly, C=4))
