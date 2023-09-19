@@ -11,10 +11,12 @@ def poly_derivative(poly):
         poly (_type_): _description_
     """
     derivative = []
+    if not isinstance(poly, list):
+        return None
     if len(poly) == 1:
         return [0]
     for i in range(len(poly)-1, 0, -1):
 
         derivative.append(poly[i]*i)
-    return derivative
+    return derivative[::-1]
 # print(poly_derivative([5]))

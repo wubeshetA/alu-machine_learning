@@ -10,7 +10,11 @@ def summation_i_squared(n):
     Args:
         n (_type_): _description_
     """
+    if n == 1:
+        return 1
     if n < 1:
         return None
     else:
-        return sum([i**2 for i in range(1, n+1)])
+        return n**2 + summation_i_squared(n-1)
+
+# print(summation_i_squared(0))
