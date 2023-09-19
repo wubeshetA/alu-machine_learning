@@ -4,7 +4,7 @@ Calculates the integral of a polynomial
 """
 
 
-def poly_integral(poly, c=0):
+def poly_integral(poly, C=0):
     """ Calculates the integral of a polynomial
 
     Args:
@@ -12,7 +12,7 @@ def poly_integral(poly, c=0):
         c (int, optional): _description_. Defaults to 0.
     """
     integral = []
-    if not isinstance(poly, list) and not isinstance(c, int):
+    if not isinstance(poly, list) and not isinstance(C, int):
         return None
 
     # integral.append(c)
@@ -23,5 +23,5 @@ def poly_integral(poly, c=0):
     integral.append(c)
     return integral[::-1]
 
-# poly = [5, 3, 0, 1]
-# print(poly_integral(poly))
+poly = [5, 3, 0, 1]
+print(poly_integral(poly, C=4))
