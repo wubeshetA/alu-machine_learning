@@ -24,5 +24,5 @@ def poly_integral(poly, C=0):
     return integral[::-1]
 
 
-poly = [5, 3, 0, 1]
-print(poly_integral(poly, C=4))
+# poly = [5, 3, 0, 1]
+# print(poly_integral(poly, C=4))
