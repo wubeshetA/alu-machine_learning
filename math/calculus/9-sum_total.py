@@ -15,6 +15,8 @@ def summation_i_squared(n):
     if n < 1:
         return None
     else:
-        return n**2 + summation_i_squared(n-1)
+        result = (n*(n+1)*(2*n+1))//6
+        return result
 
-# print(summation_i_squared(0))
+
+# print(summation_i_squared(5))

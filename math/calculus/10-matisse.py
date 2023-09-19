@@ -11,7 +11,7 @@ def poly_derivative(poly):
         poly (_type_): _description_
     """
     derivative = []
-    if not isinstance(poly, list):
+    if not isinstance(poly, list) or len(poly) == 0:
         return None
     if len(poly) == 1:
         return [0]
@@ -19,4 +19,6 @@ def poly_derivative(poly):
 
         derivative.append(poly[i]*i)
     return derivative[::-1]
-# print(poly_derivative([5]))
+
+
+# print(poly_derivative([]))

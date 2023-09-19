@@ -20,8 +20,9 @@ def poly_integral(poly, C=0):
 
         integral.append(poly[i]/(i+1))
     integral.append(poly[0])
-    integral.append(c)
+    integral.append(C)
     return integral[::-1]
 
-poly = [5, 3, 0, 1]
-print(poly_integral(poly, C=4))
+
+# poly = [5, 3, 0, 1]
+# print(poly_integral(poly, C=4))
