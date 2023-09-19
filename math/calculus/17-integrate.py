@@ -16,11 +16,16 @@ def poly_integral(poly, C=0):
         integral.append(poly[i]/(i+1))
 
     integral.append(poly[0])
-    if C:
-        integral.append(C)
+    integral.append(C)
     # fit the output like on the intranet
+    if len(poly) == 1 and poly[0] == 0:
+        integral = [C]
     for i in range(len(integral)):
         if integral[i] % 1 == 0:
             integral[i] = int(integral[i])
 
     return integral[::-1]
+
+
+# poly = [0]
+# print(poly_integral(poly, C=9))
