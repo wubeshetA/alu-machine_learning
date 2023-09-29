@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-import math
+
 """ Poisson class module for Poisson distribution calculations """
+
+E = 2.7182818285
 
 
 class Poisson:
@@ -33,7 +35,13 @@ class Poisson:
         if k < 0:
             return 0
 
-        p = (self.lambtha ** k) * (math.e ** -self.lambtha) / math.factorial(k)
+        def factorial(k):
+            result = 1
+            for i in range(1, k+1):
+                result *= i
+            return result
+
+        p = (self.lambtha ** k) * (E ** -self.lambtha) / factorial(k)
         return p
 
 
