@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# write module documentation here
+import math
 """ Poisson class module for Poisson distribution calculations """
 
 
@@ -22,16 +22,30 @@ class Poisson:
                 raise ValueError('data must contain multiple values')
             self.lambtha = float(sum(data) / len(data))
 
+    def pmf(self, k):
+        """ Calculates the value of the PMF for a given number of "successes."
+
+        Args:
+            k (int): number of "successes"
+        """
+        if not isinstance(k, int):
+            k = int(k)
+        if k < 0:
+            return 0
+
+        p = (self.lambtha ** k) * (math.e ** -self.lambtha) / math.factorial(k)
+        return p
+
 
 if __name__ == '__main__':
     import numpy as np
     np.random.seed(0)
     data = np.random.poisson(5., 100).tolist()
     p1 = Poisson(data)
-    print('Lambtha:', p1.lambtha)
+    print('P(9):', p1.pmf(9))
 
     p2 = Poisson(lambtha=5)
-    print('Lambtha:', p2.lambtha)
+    print('P(9):', p2.pmf(9))
     # count, bins, ignored = plt.hist(data, 14, density=True)
     # plt.show()
-    print(data)
+    # print(data)
