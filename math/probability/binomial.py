@@ -15,8 +15,8 @@ class Binomial:
         """ Constructor
 
         Args:
-            data (list, optional): list of the data to be used. Defaults to None.
-            n (int, optional): is the number of Bernoulli trials. Defaults to 1.
+            data (list, optional): list of the data to be used.
+            n (int, optional): is the number of Bernoulli trials.
             p (float, optional): probablity of success. Defaults to 0.5.
         """
 
@@ -33,7 +33,9 @@ class Binomial:
                 raise TypeError("data must be a list")
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
-            # Hint: Calculate p first and then calculate n. Then recalculate p. Think about why you would want to do it this way?
+            # Hint: Calculate p first and then calculate n.
+            # Then recalculate p. Think about why you would
+            # want to do it this way?
             mean = float(sum(data) / len(data))
             var = float(
                 (sum(map(lambda n: pow(n - mean, 2), data)) / len(data)))
@@ -62,7 +64,8 @@ class Binomial:
         n_fact = self.factorial(self.n)
         k_fact = self.factorial(k)
         n_k_fact = self.factorial(self.n - k)
-        return (n_fact / (k_fact * n_k_fact)) * (self.p ** k) * ((1 - self.p) ** (self.n - k))
+        return (n_fact / (k_fact * n_k_fact)) * \
+            (self.p ** k) * ((1 - self.p) ** (self.n - k))
 
     def cdf(self, k):
         """Calculates the value of the CDF for a given number of "successes."
