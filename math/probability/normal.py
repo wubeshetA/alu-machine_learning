@@ -29,13 +29,29 @@ class Normal:
             self.stddev = (sum([(x - self.mean) ** 2 for x in data])
                            / len(data)) ** 0.5
 
+    def z_score(self, x):
+        """ Calculates the z-score of a given x-value
+        """
+        return (x - self.mean) / self.stddev
+
+    def x_value(self, z):
+        """ Calculates the x-value of a given z-score
+        """
+        return self.mean + z * self.stddev
+
+    def pdf(self, x):
+        """ Calculates the value of the PDF for a given time period
+        """
+        return (self.E ** (-0.5 * ((x - self.mean) / self.stddev) ** 2)
+                / (self.stddev * ((2 * self.PI) ** 0.5)))
+
 
 if __name__ == "__main__":
     import numpy as np
     np.random.seed(0)
     data = np.random.normal(70, 10, 100).tolist()
     n1 = Normal(data)
-    print('Mean:', n1.mean, ', Stddev:', n1.stddev)
+    print('PSI(90):', n1.pdf(90))
 
     n2 = Normal(mean=70, stddev=10)
-    print('Mean:', n2.mean, ', Stddev:', n2.stddev)
+    print('PSI(90):', n2.pdf(90))
