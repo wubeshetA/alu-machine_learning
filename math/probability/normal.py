@@ -48,7 +48,7 @@ class Normal:
     def cdf(self, x):
         """ Calculates the value of the CDF for a given time period
         """
-        return sum([self.pdf(i) for i in range(int(x) + 1)])
+        return (0.5 * (1 + self.erf((x - self.mean) / (self.stddev * 2 ** 0.5))))
 
     def erf(self, x):
         """ Calculates the error function
