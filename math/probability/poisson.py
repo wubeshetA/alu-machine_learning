@@ -63,17 +63,3 @@ class Poisson:
                                        self.lambtha) / self.factorial(k)
             return p
         return sum([p(k) for k in range(0, k+1)])
-
-
-if __name__ == '__main__':
-    import numpy as np
-    np.random.seed(0)
-    data = np.random.poisson(5., 100).tolist()
-    p1 = Poisson(data)
-    print('F(9):', p1.cdf(9))
-
-    p2 = Poisson(lambtha=5)
-    print('F(9):', p2.cdf(9))
-    # count, bins, ignored = plt.hist(data, 14, density=True)
-    # plt.show()
-    # print(data)
