@@ -25,13 +25,27 @@ class Exponential:
                 raise ValueError('data must contain multiple values')
             self.lambtha = 1/(float(sum(data) / len(data)))
 
+    def pdf(self, x):
+        """ Calculates the value of the PDF for a given time period
+        """
+        if x < 0:
+            return 0
+        return self.lambtha * (self.E ** (-self.lambtha * x))
+
+    def cdf(self, x):
+        """ Calculates the value of the CDF for a given time period
+        """
+        if x < 0:
+            return 0
+        return 1 - (self.E ** (-self.lambtha * x))
+
 
 if __name__ == "__main__":
     import numpy as np
     np.random.seed(0)
     data = np.random.exponential(0.5, 100).tolist()
     e1 = Exponential(data)
-    print('Lambtha:', e1.lambtha)
+    print('F(1):', e1.cdf(1))
 
     e2 = Exponential(lambtha=2)
-    print('Lambtha:', e2.lambtha)
+    print('F(1):', e2.cdf(1))
