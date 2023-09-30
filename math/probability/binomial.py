@@ -4,10 +4,6 @@
 """Binomial class module for Binomial distribution calculations """
 
 
-import numpy as np
-import matplotlib.pyplot as plt
-
-
 class Binomial:
     """Binomial class"""
 
