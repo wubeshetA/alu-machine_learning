@@ -26,6 +26,7 @@ class Poisson:
             self.lambtha = float(sum(data) / len(data))
 
     def factorial(self, k):
+        """ Find factorial of a number """
         result = 1
         for i in range(1, k+1):
             result *= i
