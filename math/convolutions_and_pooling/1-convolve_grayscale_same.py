@@ -15,21 +15,15 @@ def convolve_grayscale_same(images, kernel):
         kernel (ndarray): _description_
     """
 
-    m, h, w = images.shape
     kh, kw = kernel.shape
-    output_h = h
-    output_w = w
-    if kh % 2 == 0:
-        output_h = h - kh + 1
-    if kw % 2 == 0:
-        output_w = w - kw + 1
-    output = np.zeros((m, output_h, output_w))
-    pad_h = kh // 2
-    pad_w = kw // 2
-    images = np.pad(images, ((0, 0), (pad_h, pad_h),
-                    (pad_w, pad_w)), 'constant')
-    for i in range(output_h):
-        for j in range(output_w):
-            output[:, i, j] = (kernel * images[:, i: i + kh, j: j + kw])\
-                .sum(axis=(1, 2))
-    return output
+    m, hm, wm = images.shape
+    ph = int(kh / 2)
+    pw = int(kw / 2)
+    padded = np.pad(images, ((0, 0), (ph, ph), (pw, pw)), 'constant')
+    convoluted = np.zeros((m, hm, wm))
+    for h in range(hm):
+        for w in range(wm):
+            square = padded[:, h: h + kh, w: w + kw]
+            insert = np.sum(square * kernel, axis=1).sum(axis=1)
+            convoluted[:, h, w] = insert
+    return convoluted
