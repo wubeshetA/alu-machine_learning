@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Performs a valid convolution on grayscale 
+Performs a valid convolution on grayscale
 if necessary, the image should be padded with 0’s
 """
 
