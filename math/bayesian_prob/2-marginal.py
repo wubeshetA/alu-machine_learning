@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""Calculate intersection
+"""Calculate mariginal probablity
 """
 
 
 import numpy as np
 
 
-def intersection(x, n, P, Pr):
-    """Returns: a 1D numpy.ndarray containing the intersection of obtaining
-        x and n with each probability in P, respectively
+def marginal(x, n, P, Pr):
+    """Returns: the marginal probability of obtaining x and n
     """
     if type(n) is not int or n <= 0:
         raise ValueError('n must be a positive integer')
@@ -32,4 +31,4 @@ def intersection(x, n, P, Pr):
     factorial = np.math.factorial
     likelihood = factorial(n)/(factorial(x)*factorial(n-x))
     likelihood *= (P**x) * ((1-P)**(n-x))
-    return likelihood * Pr
+    return np.sum(likelihood * Pr)
