@@ -6,6 +6,7 @@ severe side effects falls within a specific range given the data
 
 from scipy import special
 
+
 def posterior(x, n, p1, p2):
     """ Returns: the posterior probability that p is within the range [p1, p2]
         given x and n
@@ -24,5 +25,3 @@ def posterior(x, n, p1, p2):
     if p2 <= p1:
         raise ValueError('p2 must be greater than p1')
     return special.btdtr(x+1, n-x+1, p2) - special.btdtr(x+1, n-x+1, p1)
-    
-    
