@@ -25,6 +25,6 @@ class Neuron:
         if nx < 1:
             raise ValueError('nx must be positive')
 
-        self.W = np.random.Generator.default.normal(0, 1, (1, nx))
+        self.W = np.random.normal(0, 1, (1, nx))
         self.b = 0
         self.A = 0
