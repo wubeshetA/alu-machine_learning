@@ -74,3 +74,9 @@ class Neuron:
         loss = - (Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
         cost = np.mean(loss)
         return cost
+
+    def evaluate(self, X, Y):
+        pred = self.forward_prop(X)
+        cost = self.cost(Y, pred)
+        pred = np.where(pred > 0.5, 1, 0)
+        return (pred, cost)
