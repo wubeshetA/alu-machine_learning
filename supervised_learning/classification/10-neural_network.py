@@ -59,3 +59,22 @@ class NeuralNetwork:
     def b2(self):
         """Return bias for the output neuron"""
         return self.__b2
+
+    @property
+    def A2(self):
+        """Return activated output for the output neuron"""
+        return self.__A2
+
+    def forward_prop(self, X):
+        """ Calculates the forward propagation of the neural network
+
+        Args:
+            X (numpy.array): Input data with shape (nx, m)
+        """
+        z = np.matmul(self.__W1, X) + self.__b1
+        sigmoid = 1 / (1 + np.exp(-z))
+        self.__A1 = sigmoid
+        z = np.matmul(self.__W2, self.__A1) + self.__b2
+        sigmoid = 1 / (1 + np.exp(-z))
+        self.__A2 = sigmoid
+        return self.__A1, self.__A2
