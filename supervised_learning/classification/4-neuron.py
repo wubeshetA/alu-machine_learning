@@ -64,7 +64,7 @@ class Neuron:
         """ Compute the of the model using logistic regression
 
         Args:
-            Y (np.array): True values 
+            Y (np.array): True values
             A (np.array): Prediction valuesss
 
         Returns:
@@ -76,6 +76,15 @@ class Neuron:
         return cost
 
     def evaluate(self, X, Y):
+        """ Evaluate the cost function
+
+        Args:
+            X (np.array): Input array
+            Y (np.array): actual values
+
+        Returns:
+            tuple: Prediction and Cost
+        """
         pred = self.forward_prop(X)
         cost = self.cost(Y, pred)
         pred = np.where(pred > 0.5, 1, 0)
