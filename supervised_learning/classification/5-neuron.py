@@ -91,7 +91,8 @@ class Neuron:
             alpha (float, optional): _description_. Defaults to 0.05.
         """
         dz = A - Y
-        dw = np.mean(np.matmul(X, dz.T))
+        m = X.shape[1]
+        dw = (1/m) * np.matmul(dz, X.T)
         db = np.mean(dz)
         self.__W -= alpha * dw
         self.__b -= alpha * db
