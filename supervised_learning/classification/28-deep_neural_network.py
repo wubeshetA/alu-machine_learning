@@ -153,10 +153,11 @@ class DeepNeuralNetwork:
 
             if i == self.L:
                 dz = A - Y
-            elif self.activation == 'sig':
-                dz = da * (A * (1 - A))  # sigmoid derivative
-            elif self.activation == 'tanh':
-                dz = da * (1 - A**2)  # tanh derivative
+            else:
+                if self.activation == 'sig':
+                    dz = da * (A * (1 - A))  # sigmoid derivative
+                elif self.activation == 'tanh':
+                    dz = da * (1 - A**2)  # tanh derivative
 
             db = dz.mean(axis=1, keepdims=True)
             dw = np.matmul(dz, A_prev.T) / m
