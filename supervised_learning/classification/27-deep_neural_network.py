@@ -90,11 +90,14 @@ class DeepNeuralNetwork:
         return self.cache["A"+str(i)], self.cache
 
     def cost(self, Y, A):
-        """ Calculate the cost of the Neural Network using categorical cross-entropy.
+        """ Calculate the cost of the Neural Network \
+            using categorical cross-entropy.
 
         Args:
-            Y (numpy.array): Actual one-hot encoded labels with shape (classes, m)
-            A (numpy.array): Predicted probabilities from the output layer of the neural network
+            Y (numpy.array): Actual one-hot encoded \
+                labels with shape (classes, m)
+            A (numpy.array): Predicted probabilities \
+                from the output layer of the neural network
 
         Returns:
             float: Categorical cross-entropy cost
@@ -114,10 +117,10 @@ class DeepNeuralNetwork:
         """
         self.forward_prop(X)
         # get output of the neural network from the cache
-        output = self.cache.get("A" + str(self.L))
+        A = self.cache.get("A" + str(self.L))
         # get the class with the highest probability
-        prediction = np.argmax(output, axis=0)
-        cost = self.cost(Y, output)
+        prediction = np.eye(A.shape[0])[np.argmax(A, axis=0)].T
+        cost = self.cost(Y, A)
         return prediction, cost
 
     def gradient_descent(self, Y, cache, alpha=0.05):
