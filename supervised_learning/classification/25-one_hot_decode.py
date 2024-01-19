@@ -13,13 +13,9 @@ def one_hot_decode(one_hot):
     Args:
         one_hot (_type_): _description_
     """
-    shape = one_hot.shape
-    label = np.zeros(shape[0])
-    for i in range(shape[0]):
-        for j in range(shape[1]):
-            if one_hot[i][j] == 1:
-                label[j] = i
-
-    # covert all element of the vector to int
-    label = label.astype(int)
-    return label
+    if not isinstance(one_hot, np.ndarray) or len(one_hot.shape) != 2:
+        return None
+    try:
+        return np.argmax(one_hot, axis=0)
+    except Exception:
+        return None
