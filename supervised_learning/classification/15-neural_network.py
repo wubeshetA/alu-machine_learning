@@ -3,6 +3,7 @@
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class NeuralNetwork:
@@ -122,7 +123,8 @@ class NeuralNetwork:
         self.__W1 -= alpha * dw1.T
         self.__b1 -= alpha * db1
 
-    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
+    def train(self, X, Y, iterations=1000, alpha=0.05,
+              verbose=True, graph=True, step=100):
         """ Trains the neural network
 
         Args:
