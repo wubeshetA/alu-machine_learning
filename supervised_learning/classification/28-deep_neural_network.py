@@ -78,25 +78,20 @@ class DeepNeuralNetwork:
         return self.__weights
 
     def forward_prop(self, X):
-        """ Forward propagation
-
-        Args:
-            X (numpy.array): Input array with
-            shape (nx, m) = (features, no of examples)
-        """
+        """ Forward propagation """
         self.cache["A0"] = X
         for i in range(1, self.L+1):
-            # extract values
             W = self.weights['W'+str(i)]
             b = self.weights['b'+str(i)]
             A = self.cache['A'+str(i - 1)]
-            # do forward propagation
             z = np.matmul(W, A) + b
             if i != self.L:
-                A = 1 / (1 + np.exp(-z))  # sigmoid function
+                if self.activation == 'sig':
+                    A = 1 / (1 + np.exp(-z))  # sigmoid function
+                elif self.activation == 'tanh':
+                    A = np.tanh(z)  # tanh function
             else:
                 A = np.exp(z) / np.sum(np.exp(z), axis=0)  # softmax function
-            # store output to the cache
             self.cache["A"+str(i)] = A
         return self.cache["A"+str(i)], self.cache
 
