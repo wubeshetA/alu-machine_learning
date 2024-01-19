@@ -141,7 +141,8 @@ class DeepNeuralNetwork:
             self.__weights['W' + str(i)] -= (alpha * dw)
             self.__weights['b' + str(i)] -= (alpha * db)
 
-    def train(self, X, Y, iterations=5000, alpha=0.05):
+    def train(self, X, Y, iterations=5000,
+              alpha=0.05, verbose=True, graph=True, step=100):
         """ Train the deep neural network
 
         Args:
@@ -149,6 +150,9 @@ class DeepNeuralNetwork:
             Y (_type_): _description_
             iterations (int, optional): _description_. Defaults to 5000.
             alpha (float, optional): _description_. Defaults to 0.05.
+            verbose (bool, optional): _description_. Defaults to True.
+            graph (bool, optional): _description_. Defaults to True.
+            step (int, optional): _description_. Defaults to 100.
 
         Raises:
             TypeError: _description_
@@ -169,7 +173,19 @@ class DeepNeuralNetwork:
         if alpha < 0:
             raise ValueError('alpha must be positive')
 
+        costs = []
         for i in range(iterations):
             self.forward_prop(X)
             self.gradient_descent(Y, self.cache, alpha)
+            if verbose and i % step == 0:
+
+                cost = self.cost(Y, self.cache["A"+str(self.L)])
+                costs.append(cost)
+                print('Cost after {} iterations: {}'.format(i, cost))
+        if graph:
+            plt.plot(np.arange(0, iterations, step), costs)
+            plt.xlabel('iteration')
+            plt.ylabel('cost')
+            plt.title('Training Cost')
+            plt.show()
         return self.evaluate(X, Y)
