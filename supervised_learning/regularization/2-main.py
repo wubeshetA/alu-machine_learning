@@ -31,7 +31,7 @@ y = tf.placeholder(tf.float32, (None, c))
 a1 = tf.layers.Dense(n1, activation=tf.nn.tanh, kernel_initializer=tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG"), kernel_regularizer=tf.contrib.layers.l2_regularizer(lam))(x)
 a2 = tf.layers.Dense(n2, activation=tf.nn.sigmoid, kernel_initializer=tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG"), kernel_regularizer=tf.contrib.layers.l2_regularizer(lam))(a1)
 y_pred = tf.layers.Dense(c, activation=None, kernel_initializer=tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG"), kernel_regularizer=tf.contrib.layers.l2_regularizer(lam))(a2)
-
+    
 cost = tf.losses.softmax_cross_entropy(y, y_pred)
 
 l2_cost = l2_reg_cost(cost)
