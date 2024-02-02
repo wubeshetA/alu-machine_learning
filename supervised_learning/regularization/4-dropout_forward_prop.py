@@ -13,7 +13,8 @@ def dropout_forward_prop(X, weights, L, keep_prob):
         weights: dictionary of weights and biases of the neural network
         L: number of layers in the network
         keep_prob: probability that a node will be kept
-        Returns: dictionary containing the outputs of each layer and the dropout mask used on each layer
+        Returns: dictionary containing the outputs of each
+        layer and the dropout mask used on each layer
     """
     cache = {}
     cache['A0'] = X
