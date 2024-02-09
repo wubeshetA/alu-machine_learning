@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-""" Normalize"""
+""" Shuffle Data"""
 
 import numpy as np
+
 
 def shuffle_data(X, Y):
     """ Shuffle data points in two matrices the same way
@@ -10,4 +11,5 @@ def shuffle_data(X, Y):
         X (_type_): _description_
         Y (_type_): _description_
     """
-    return np.random.permutation(X), np.random.permutation(Y)
+    s = np.random.permutation(X.shape[0])
+    return X[s], Y[s]

@@ -1,3 +1,6 @@
 .python-version
 __pycache__
 data
+graph.ckpt.data-00000-of-00001
+graph.ckpt.index
+graph.ckpt.meta
