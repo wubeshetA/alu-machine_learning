@@ -1,30 +1,21 @@
 #!/usr/bin/env python3
-""" Return list of ships"""
-
-
+"""Pipeline Api"""
 import requests
 
 
 def sentientPlanets():
-    """ Return list of names of the home planets of all sentient species.
-    """
-
-    res = requests.get('https://swapi-api.alx-tools.com/species/')
-
-    output = []
-    while res.status_code == 200:
-        res = res.json()
-        for species in res['results']:
-            if species['designation'] == "sentient" or\
-                    species['classification'] == "sentient":
-                # send a request to homeworld
-                if species['homeworld'] is None:
-                    continue
-                print(species['homeworld'])
-                planet = requests.get(species['homeworld'])
-                output.append(planet.json()['name'])
+    """returns the list of names of the home planets of all sentient species"""
+    url = "https://swapi-api.hbtn.io/api/species"
+    r = requests.get(url)
+    world_list = []
+    while r.status_code == 200:
+        for species in r.json()["results"]:
+            url = species["homeworld"]
+            if url is not None:
+                ur = requests.get(url)
+                world_list.append(ur.json()["name"])
         try:
-            res = requests.get(res['next'])
+            r = requests.get(r.json()["next"])
         except Exception:
             break
-    return output
+    return world_list
