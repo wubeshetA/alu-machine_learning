@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-
 """ Return list of ships"""
+
 
 import requests
 
