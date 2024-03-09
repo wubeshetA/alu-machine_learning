@@ -17,6 +17,7 @@ if __name__ == "__main__":
         diff = int((rate_limit - current_time) / 60)
         print("Rest in {} min".format(diff))
         # get remaining rate
+
     elif res.status_code == 404:
         print("Not found")
     elif res.status_code == 200:
