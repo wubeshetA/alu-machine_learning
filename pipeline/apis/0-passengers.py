@@ -12,9 +12,7 @@ def availableShips(passengerCount):
         passengerCount (int): number of ships
     """
 
-    base_url = "https://swapi-api.alx-tools.com/api"
-
-    res = requests.get(f'{base_url}/starships')
+    res = requests.get('https://swapi-api.alx-tools.com/api/starships')
 
     output = []
     while res.status_code == 200:
