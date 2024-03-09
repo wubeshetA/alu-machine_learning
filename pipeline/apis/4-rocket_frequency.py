@@ -8,6 +8,7 @@ if __name__ == '__main__':
     url = "https://api.spacexdata.com/v4/launches"
     r = requests.get(url)
     rocket_dict = {"5e9d0d95eda69955f709d1eb": 0}
+
     for launch in r.json():
         if launch["rocket"] in rocket_dict:
             rocket_dict[launch["rocket"]] += 1

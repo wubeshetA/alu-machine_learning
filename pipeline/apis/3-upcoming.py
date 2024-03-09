@@ -9,6 +9,7 @@ if __name__ == '__main__':
     url = "https://api.spacexdata.com/v4/launches/upcoming"
     r = requests.get(url)
     recent = 0
+    
     for dic in r.json():
         new = int(dic["date_unix"])
         if recent == 0 or new < recent:
