@@ -1,16 +1,32 @@
--- Procedure to add a bonus to a user for a project
 DELIMITER $$
 
-CREATE PROCEDURE ComputeAverageScoreForUser (
-    IN p_user_id INT,
-)
-
+CREATE PROCEDURE ComputeAverageScoreForUser (IN user_id_param INT)
 BEGIN
-    DECLARE average_score FLOAT;
+    DECLARE total_score FLOAT;
+    DECLARE total_projects INT;
+    DECLARE avg_score FLOAT;
 
-    -- Compute average score
-    SELECT AVG(score) INTO average_score FROM corrections WHERE user_id = p_user_id;
+    -- Calculate total score for the user
+    SELECT SUM(score) INTO total_score
+    FROM corrections
+    WHERE user_id = user_id_param;
 
-    -- Update user
-    UPDATE users SET average_score = average_score WHERE id = p_user_id;
+    -- Count total projects for the user
+    SELECT COUNT(*) INTO total_projects
+    FROM corrections
+    WHERE user_id = user_id_param;
+
+    -- Calculate average score
+    IF total_projects > 0 THEN
+        SET avg_score = total_score / total_projects;
+    ELSE
+        SET avg_score = 0;
+    END IF;
+
+    -- Update average score for the user
+    UPDATE users
+    SET average_score = avg_score
+    WHERE id = user_id_param;
 END $$
+
+DELIMITER ;
