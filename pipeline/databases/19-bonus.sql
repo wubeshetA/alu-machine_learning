@@ -1,4 +1,4 @@
--- add bonus
+-- Procedure to add a bonus to a user for a project
 DELIMITER $$
 
 CREATE PROCEDURE AddBonus(
