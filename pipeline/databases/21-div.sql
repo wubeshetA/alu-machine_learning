@@ -1,4 +1,5 @@
--- function
+-- Content: SQL to create a function that safely divides two numbers
+DELIMITER $$
 CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT
 
 BEGIN
@@ -7,4 +8,4 @@ BEGIN
     ELSE
         RETURN a / b;
     END IF;
-END
+END $$
