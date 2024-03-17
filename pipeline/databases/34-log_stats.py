@@ -7,9 +7,8 @@ Nginx logs stored in MongoDB:
 from pymongo import MongoClient
 
 
-def log_stats():
-    """ Output log
-    """
+if __name__ == '__main__':
+
     # Connect to MongoDB
     client = MongoClient('mongodb://127.0.0.1:27017')
     collection = client.logs.nginx
@@ -31,6 +30,3 @@ def log_stats():
     for method, count in method_counts.items():
         print(f"\tmethod {method}: {count}")
     print(f"{status_check_count} status check")
-
-
-log_stats()
